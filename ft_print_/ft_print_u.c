@@ -4,9 +4,9 @@ static char* check_preci(unsigned int n, char *num, t_printf *temp)
 {
 	char *tmp;
 
-	if (temp->preci > ft_rank(n))
+	if (temp->preci > ft_rank(n, 10))
 	{
-		temp->preci = temp->preci - ft_rank(n);
+		temp->preci = temp->preci - ft_rank(n, 10);
 		num = ft_itoa(n);
 		while (temp->preci-- > 0)
 		{
@@ -21,7 +21,7 @@ static char* check_preci(unsigned int n, char *num, t_printf *temp)
 	return (num);
 }
 
-static int print_min(t_printf *tmp, unsigned int n, char *num)
+static int print_min(t_printf *tmp, char *num)
 {
 	int i;
 	int len;
@@ -43,7 +43,7 @@ static int print_min(t_printf *tmp, unsigned int n, char *num)
 	return (len);
 }
 
-static int print(t_printf *tmp, unsigned int n, char *num)
+static int print(t_printf *tmp, char *num)
 {
 	int i;
 	int len;
@@ -79,9 +79,9 @@ static int check_flag(t_printf *tmp, unsigned int n)
 	else
 		num = check_preci(n, num, tmp);
 	if (tmp->flag == '-')
-		len = print_min(tmp, n, num);
+		len = print_min(tmp, num);
 	else
-		len = print(tmp, n, num);
+		len = print(tmp, num);
 	return (len);
 }
 

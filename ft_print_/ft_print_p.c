@@ -44,20 +44,17 @@ static int print(t_printf *tmp, char *num)
 	return (len);
 }
 
-static char* check_preci(unsigned int n, char *num, t_printf *temp)
+static char* check_preci(unsigned long long n, char *num, t_printf *temp)
 {
 	char *tmp;
 
 	tmp = convert(n, 16, "0123456789abcdef", temp);
-	if (*tmp == '0')
-		num = ft_strjoin("0x", tmp);
-	else
-		num = ft_strjoin("0x10", tmp);
+	num = ft_strjoin("0x", tmp);
 	free(tmp);
 	return (num);
 }
 
-static int check_flag(t_printf *tmp, unsigned int n)
+static int check_flag(t_printf *tmp, unsigned long long n)
 {
 	int len;
 	char *num;
@@ -73,9 +70,9 @@ static int check_flag(t_printf *tmp, unsigned int n)
 
 int ft_print_p(const char *fmt, va_list ap, int len,  t_printf *tmp)
 {
-	unsigned int val;
+	unsigned long long  val;
 
-	val = va_arg(ap, unsigned int);
+	val = va_arg(ap, unsigned long long);
 	len += check_flag(tmp, val);
 	return ft_printf_aux(fmt, ap, len);
 }

@@ -46,7 +46,7 @@ int ft_seek_width(char *fmt, t_printf *tmp, va_list ap)
 	}
 	tmp->width = ft_atoi(fmt);
 	if (tmp->width > 0)
-		return (ft_rank(tmp->width) + flag);
+		return (ft_rank(tmp->width, 10) + flag);
 	return (0);
 }
 
@@ -75,7 +75,7 @@ int ft_seek_preci(char *fmt, t_printf *tmp, va_list ap)
 			tmp->preci = 0;
 			return (1+i);
 		}
-		return (ft_rank(tmp->preci) + 1 + i);
+		return (ft_rank(tmp->preci, 10) + 1 + i);
 	}
 	return (0);
 }

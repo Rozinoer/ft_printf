@@ -1,6 +1,6 @@
 #include "../includes/libft.h"
 
-int ft_rank(long int num)
+int ft_rank(unsigned long long num, unsigned long long base)
 {
 	int rank;
 
@@ -11,7 +11,7 @@ int ft_rank(long int num)
 		return (1);
 	while (num > 0)
 	{
-		num = num / 10;
+		num = num / base;
 		rank++;
 	}
 	return (rank);

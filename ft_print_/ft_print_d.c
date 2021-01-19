@@ -55,9 +55,9 @@ static char* check_preci(int n, char *num, t_printf *temp)
 {
 	char *tmp;
 
-	if (temp->preci > ft_rank(n))
+	if (temp->preci > ft_rank(n, 10))
 	{
-		temp->preci = temp->preci - ft_rank(n);
+		temp->preci = temp->preci - ft_rank(n, 10);
 		num = ft_itoa(n);
 		while (temp->preci-- > 0)
 		{

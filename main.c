@@ -33,18 +33,7 @@ int main() {
 	int am;
 	int am1;
 	char *p = "Hello";
-	char *p1 = "Hello1";
-	char *p2 = "Hello2";
-	char *str = "white";
-
-	printf("%p\n",p);
-//	printf("%p\n",ft_utoa(p1,16,"0123456789abcdef"));
-//	printf("%p\n",ft_utoa(p2,16,"0123456789abcdef"));
-	am1 = printf("   printf = [%s]\n", ft_utoa(p,16,"0123456789abcdef"));
-	am = ft_printf("ft_printf = [%p]\n", p);
-	printf("\nmy printf = %d\nsystem printf = %d\n",am,am1);
-	am1 = printf("   printf = [%p]\n", str);
-	am = ft_printf("ft_printf = [%p]\n", str);
-	printf("\nmy printf = %d\nsystem printf = %d\n",am,am1);
+	printf("   printf = [%p]\n", p);
+	ft_printf("ft_printf = [%p]\n", p);
     return 0;
 }

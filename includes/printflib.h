@@ -23,7 +23,7 @@ int ft_print_x(const char *fmt, va_list ap, int len,  t_printf *tmp);
 int ft_print_p(const char *fmt, va_list ap, int len,  t_printf *tmp);
 int ft_print_proc(const char *fmt, va_list ap, int len,  t_printf *tmp);
 int ft_printf_aux(const char *fmt, va_list ap, int len);
-char* convert(unsigned int n, unsigned int base, const char *digits, t_printf *tmp);
+char* convert(unsigned long long n, unsigned int base, const char *digits, t_printf *tmp);
 int ft_parse(const char *fmt, t_printf *tmp, va_list ap);
 int ft_seek_flags(const char *fmt, t_printf *tmp);
 int ft_seek_width(char *fmt, t_printf *tmp, va_list ap);

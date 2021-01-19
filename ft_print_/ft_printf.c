@@ -31,37 +31,24 @@ int ft_printf_aux(const char *fmt, va_list ap, int len)
 	return len;
 }
 
-char* convert(unsigned int n, unsigned int base, const char *digits, t_printf *tmp)
+char* convert(unsigned long long n, unsigned int base, const char *digits, t_printf *tmp)
 {
 	int res;
-	unsigned long long temp;
 	char* dig;
 
-	temp = n;
-	res = 1;
-	if (n == 0)
-		res++;
-	while (n > 0)
-	{
-		res++;
-		n = n / base;
-	}
-	dig = malloc(res);
-	dig[--res] = '\0';
+	res = ft_rank(n, 16);
+	if(!(dig = malloc(res)))
+		return NULL;
+	dig[res] = '\0';
 	while (--res >= 0)
 	{
 		if (tmp->type == 'X')
-			dig[res] = (char)ft_toupper(digits[temp % base]);
+			dig[res] = (char)ft_toupper(digits[n % base]);
 		else
-			dig[res] = digits[temp % base];
-		temp = temp / base;
+			dig[res] = digits[n % base];
+		n = n / base;
 	}
 	return (dig);
-}
-
-int ft_vprintf(const char *fmt, va_list ap)
-{
-	return ft_printf_aux(fmt, ap, 0);
 }
 
 int ft_printf(const char *fmt, ...) {
