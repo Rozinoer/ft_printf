@@ -1,5 +1,35 @@
 #include "../includes/printflib.h"
 
+static int call_func(const char *fmt, va_list ap, int len,  t_printf *tmp, char *type)
+{
+	int i;
+
+	i = -1;
+	while (*type)
+	{
+		if (tmp->type == *type)
+		{
+			if (*type == 'c')
+				i = ft_print_c(fmt, ap, len, tmp);
+			if (*type == 's')
+				i = ft_print_s(fmt, ap, len, tmp);
+			if (*type == 'd' || *type == 'i')
+				i = ft_print_d(fmt, ap, len, tmp);
+			if (*type == 'x' || *type == 'X')
+				i = ft_print_x(fmt, ap, len, tmp);
+			if (*type == 'u')
+				i = ft_print_u(fmt, ap, len, tmp);
+			if (*type == '%')
+				i = ft_print_proc(fmt, ap, len, tmp);
+			if (*type == 'p')
+				i = ft_print_p(fmt, ap, len, tmp);
+			break ;
+		}
+		type++;
+	}
+	return (i);
+}
+
 int ft_printf_aux(const char *fmt, va_list ap, int len)
 {
 	int c;
@@ -17,15 +47,16 @@ int ft_printf_aux(const char *fmt, va_list ap, int len)
 		{
 			i = ft_parse(fmt, &tmp, ap);
 			c = (unsigned char)tmp.type;
-			if (ft_print_dispatch[tmp.type] == NULL)
+			if ((len = call_func(fmt + i, ap, len, &tmp, "csXxdiup%")) > -1)
+				return (len);
+			else
 			{
 				if (c == '\0')
 					break;
 				ft_putchar((char)c);
 				len++;
 				fmt++;
-			} else
-				return ft_print_dispatch[c](fmt + i, ap, len, &tmp);
+			}
 		}
 	}
 	return len;
@@ -54,6 +85,7 @@ char* convert(unsigned long long n, unsigned int base, const char *digits, t_pri
 int ft_printf(const char *fmt, ...) {
 	va_list ap;
 	int n;
+
 	va_start(ap, fmt);
 	n = ft_printf_aux(fmt, ap, 0);
 	va_end(ap);
