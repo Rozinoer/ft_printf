@@ -12,6 +12,27 @@
 
 #include "../includes/printflib.h"
 
+static int assist(t_printf *tmp, int len, char sym)
+{
+	if (tmp->width > 0)
+		while (tmp->width-- != 0)
+		{
+			ft_putchar(sym);
+			len++;
+		}
+	return (len);
+}
+
+static int assistance(t_printf *tmp, int len)
+{
+	while (tmp->width-- > 0)
+	{
+		ft_putchar(' ');
+		len++;
+	}
+	return (len);
+}
+
 int ft_print_c(const char *fmt, va_list ap, int len,  t_printf *tmp)
 {
 	int c;
@@ -27,20 +48,11 @@ int ft_print_c(const char *fmt, va_list ap, int len,  t_printf *tmp)
 		if (tmp->flag == '-')
 		{
 			ft_putchar((char)c);
-			if (tmp->width > 0)
-				while (tmp->width-- != 0)
-				{
-					ft_putchar(sym);
-					len++;
-				}
+			len+=assist(tmp, len, sym);
 		}
 		else
 		{
-			while (tmp->width-- > 0)
-			{
-				ft_putchar(' ');
-				len++;
-			}
+			len+=assistance(tmp, len);
 			ft_putchar((char)c);
 		}
 	} else
