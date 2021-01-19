@@ -55,7 +55,7 @@ static char *preci(int preci,const char *s, char *new_s)
 }
 static void str_free(char *s, int flag)
 {
-	if (flag > 0)
+	if (flag >= 0)
 		free(s);
 }
 int ft_print_s(const char *fmt, va_list ap, int len,t_printf *tmp)
