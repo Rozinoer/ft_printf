@@ -12,7 +12,7 @@
 
 #include "../includes/printflib.h"
 
-static int assist(t_printf *tmp, int len, char sym)
+static int  assist(t_printf *tmp, int len, char sym)
 {
 	if (tmp->width > 0)
 		while (tmp->width-- != 0)
@@ -23,7 +23,7 @@ static int assist(t_printf *tmp, int len, char sym)
 	return (len);
 }
 
-static int assistance(t_printf *tmp, int len)
+static int  assistance(t_printf *tmp, int len)
 {
 	while (tmp->width-- > 0)
 	{
@@ -33,7 +33,7 @@ static int assistance(t_printf *tmp, int len)
 	return (len);
 }
 
-int ft_print_c(const char *fmt, va_list ap, int len,  t_printf *tmp)
+int         ft_print_c(const char *fmt, va_list ap, int len, t_printf *tmp)
 {
 	int c;
 	char sym;
@@ -48,19 +48,19 @@ int ft_print_c(const char *fmt, va_list ap, int len,  t_printf *tmp)
 		if (tmp->flag == '-')
 		{
 			ft_putchar((char)c);
-			len+=assist(tmp, len, sym);
+			len = assist(tmp, len, sym);
 		}
 		else
 		{
-			len+=assistance(tmp, len);
+			len = assistance(tmp, len);
 			ft_putchar((char)c);
 		}
 	} else
 		ft_putchar((char)c);
-	return ft_printf_aux(fmt, ap, len + 1);
+	return (ft_printf_aux(fmt, ap, len + 1));
 }
 
-int ft_print_proc(const char *fmt, va_list ap, int len,  t_printf *tmp)
+int         ft_print_proc(const char *fmt, va_list ap, int len, t_printf *tmp)
 {
 	char c;
 
@@ -87,5 +87,5 @@ int ft_print_proc(const char *fmt, va_list ap, int len,  t_printf *tmp)
 			}
 	}
 	fmt++;
-	return ft_printf_aux(fmt, ap, len + 1);
+	return (ft_printf_aux(fmt, ap, len + 1));
 }
