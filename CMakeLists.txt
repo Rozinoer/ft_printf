@@ -4,15 +4,15 @@ project(ft_printf C)
 set(CMAKE_C_STANDARD 99)
 
 add_executable(ft_printf main.c
-        ft_print_/ft_parce.c
-        ft_print_/ft_print_c.c
-        ft_print_/ft_print_d.c
-        ft_print_/ft_print_p.c
-        ft_print_/ft_print_s.c
-        ft_print_/ft_print_u.c
-        ft_print_/ft_print_x.c
-        ft_print_/ft_seek.c
-        ft_print_/ft_printf.c
+        srcs/ft_parce.c
+        srcs/ft_print_c.c
+        srcs/ft_print_d.c
+        srcs/ft_print_p.c
+        srcs/ft_print_s.c
+        srcs/ft_print_u.c
+        srcs/ft_print_x.c
+        srcs/ft_seek.c
+        srcs/ft_printf.c
         includes/libft.h
         includes/printflib.h
         libft/ft_atoi.c
