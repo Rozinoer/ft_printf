@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_u.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmyesha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/20 15:58:14 by dmyesha           #+#    #+#             */
+/*   Updated: 2021/01/20 16:00:44 by dmyesha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/printflib.h"
 
-static char* check_preci(unsigned int n, char *num, t_printf *temp)
+static char		*check_preci(unsigned int n, char *num, t_printf *temp)
 {
 	char *tmp;
 
@@ -21,7 +33,7 @@ static char* check_preci(unsigned int n, char *num, t_printf *temp)
 	return (num);
 }
 
-static int print_min(t_printf *tmp, char *num)
+static int		print_min(t_printf *tmp, char *num)
 {
 	int i;
 	int len;
@@ -34,7 +46,8 @@ static int print_min(t_printf *tmp, char *num)
 		len += ft_strlen(num);
 		while (i-- > 0)
 			len += ft_putchar(tmp->flag_sym);
-	} else
+	}
+	else
 	{
 		ft_putstr(num);
 		len += ft_strlen(num);
@@ -43,7 +56,7 @@ static int print_min(t_printf *tmp, char *num)
 	return (len);
 }
 
-static int print(t_printf *tmp, char *num)
+static int		print(t_printf *tmp, char *num)
 {
 	int i;
 	int len;
@@ -56,7 +69,8 @@ static int print(t_printf *tmp, char *num)
 			len += ft_putchar(tmp->flag_sym);
 		ft_putstr(num);
 		len += ft_strlen(num);
-	} else
+	}
+	else
 	{
 		ft_putstr(num);
 		len += ft_strlen(num);
@@ -65,10 +79,10 @@ static int print(t_printf *tmp, char *num)
 	return (len);
 }
 
-static int check_flag(t_printf *tmp, unsigned int n)
+static int		check_flag(t_printf *tmp, unsigned int n)
 {
-	int len;
-	char *num;
+	int		len;
+	char	*num;
 
 	num = NULL;
 	if (tmp->preci == 0 && n == 0)
@@ -85,7 +99,7 @@ static int check_flag(t_printf *tmp, unsigned int n)
 	return (len);
 }
 
-int ft_print_u(const char *fmt, va_list ap, int len,  t_printf *tmp)
+int				ft_print_u(const char *fmt, va_list ap, int len, t_printf *tmp)
 {
 	unsigned int n;
 
@@ -95,6 +109,6 @@ int ft_print_u(const char *fmt, va_list ap, int len,  t_printf *tmp)
 		tmp->flag = 0;
 		tmp->flag_sym = ' ';
 	}
-	len+=check_flag(tmp,n);
-	return ft_printf_aux(fmt, ap, len);
+	len += check_flag(tmp, n);
+	return (ft_printf_aux(fmt, ap, len));
 }

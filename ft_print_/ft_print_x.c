@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_x.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmyesha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/20 16:00:59 by dmyesha           #+#    #+#             */
+/*   Updated: 2021/01/20 16:02:51 by dmyesha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/printflib.h"
 
-static int print_min(t_printf *tmp, unsigned int n, char *num)
+static int		print_min(t_printf *tmp, unsigned int n, char *num)
 {
 	int i;
 	int len;
@@ -13,7 +25,8 @@ static int print_min(t_printf *tmp, unsigned int n, char *num)
 		len += ft_strlen(num);
 		while (i-- > 0)
 			len += ft_putchar(tmp->flag_sym);
-	} else
+	}
+	else
 	{
 		ft_putstr(num);
 		len += ft_strlen(num);
@@ -22,7 +35,7 @@ static int print_min(t_printf *tmp, unsigned int n, char *num)
 	return (len);
 }
 
-static int print(t_printf *tmp, unsigned int n, char *num)
+static int		print(t_printf *tmp, unsigned int n, char *num)
 {
 	int i;
 	int len;
@@ -35,7 +48,8 @@ static int print(t_printf *tmp, unsigned int n, char *num)
 			len += ft_putchar(tmp->flag_sym);
 		ft_putstr(num);
 		len += ft_strlen(num);
-	} else
+	}
+	else
 	{
 		ft_putstr(num);
 		len += ft_strlen(num);
@@ -44,7 +58,7 @@ static int print(t_printf *tmp, unsigned int n, char *num)
 	return (len);
 }
 
-static char* check_preci(unsigned int n, char *num, t_printf *temp)
+static char		*check_preci(unsigned int n, char *num, t_printf *temp)
 {
 	char *tmp;
 
@@ -66,10 +80,10 @@ static char* check_preci(unsigned int n, char *num, t_printf *temp)
 	return (num);
 }
 
-static int check_flag(t_printf *tmp, unsigned int n)
+static int		check_flag(t_printf *tmp, unsigned int n)
 {
-	int len;
-	char *num;
+	int		len;
+	char	*num;
 
 	num = NULL;
 	if (tmp->preci == 0 && n == 0)
@@ -78,12 +92,7 @@ static int check_flag(t_printf *tmp, unsigned int n)
 		num[0] = '\0';
 	}
 	else
-	{
-		if (tmp->type == 'p')
-			num = ft_strdup("0x10");
-		//leak
 		num = check_preci(n, num, tmp);
-	}
 	if (tmp->flag == '-')
 		len = print_min(tmp, n, num);
 	else
@@ -91,15 +100,16 @@ static int check_flag(t_printf *tmp, unsigned int n)
 	return (len);
 }
 
-int ft_print_x(const char *fmt, va_list ap, int len,  t_printf *tmp)
+int				ft_print_x(const char *fmt, va_list ap, int len, t_printf *tmp)
 {
 	unsigned int n;
+
 	n = va_arg(ap, unsigned int);
 	if (tmp->preci >= 0 && tmp->flag == '0')
 	{
 		tmp->flag = 0;
 		tmp->flag_sym = ' ';
 	}
-	len+=check_flag(tmp,n);
-	return ft_printf_aux(fmt, ap, len);
+	len += check_flag(tmp, n);
+	return (ft_printf_aux(fmt, ap, len));
 }

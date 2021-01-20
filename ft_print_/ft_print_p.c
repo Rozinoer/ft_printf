@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmyesha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/20 15:51:28 by dmyesha           #+#    #+#             */
+/*   Updated: 2021/01/20 15:53:27 by dmyesha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/printflib.h"
 
-static int print_min(t_printf *tmp, char *num)
+static int		print_min(t_printf *tmp, char *num)
 {
 	int i;
 	int len;
@@ -13,7 +25,8 @@ static int print_min(t_printf *tmp, char *num)
 		len += ft_strlen(num);
 		while (i-- > 0)
 			len += ft_putchar(tmp->flag_sym);
-	} else
+	}
+	else
 	{
 		ft_putstr(num);
 		len += ft_strlen(num);
@@ -22,7 +35,7 @@ static int print_min(t_printf *tmp, char *num)
 	return (len);
 }
 
-static int print(t_printf *tmp, char *num)
+static int		print(t_printf *tmp, char *num)
 {
 	int i;
 	int len;
@@ -35,7 +48,8 @@ static int print(t_printf *tmp, char *num)
 			len += ft_putchar(tmp->flag_sym);
 		ft_putstr(num);
 		len += ft_strlen(num);
-	} else
+	}
+	else
 	{
 		ft_putstr(num);
 		len += ft_strlen(num);
@@ -44,7 +58,7 @@ static int print(t_printf *tmp, char *num)
 	return (len);
 }
 
-static char* check_preci(unsigned long long n, char *num, t_printf *temp)
+static char		*check_preci(unsigned long long n, char *num, t_printf *temp)
 {
 	char *tmp;
 
@@ -54,10 +68,10 @@ static char* check_preci(unsigned long long n, char *num, t_printf *temp)
 	return (num);
 }
 
-static int check_flag(t_printf *tmp, unsigned long long n)
+static int		check_flag(t_printf *tmp, unsigned long long n)
 {
-	int len;
-	char *num;
+	int		len;
+	char	*num;
 
 	num = NULL;
 	num = check_preci(n, num, tmp);
@@ -68,11 +82,11 @@ static int check_flag(t_printf *tmp, unsigned long long n)
 	return (len);
 }
 
-int ft_print_p(const char *fmt, va_list ap, int len,  t_printf *tmp)
+int				ft_print_p(const char *fmt, va_list ap, int len, t_printf *tmp)
 {
-	unsigned long long  val;
+	unsigned long long val;
 
 	val = va_arg(ap, unsigned long long);
 	len += check_flag(tmp, val);
-	return ft_printf_aux(fmt, ap, len);
+	return (ft_printf_aux(fmt, ap, len));
 }

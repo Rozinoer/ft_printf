@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_s.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmyesha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/20 15:53:39 by dmyesha           #+#    #+#             */
+/*   Updated: 2021/01/20 15:57:45 by dmyesha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/printflib.h"
 
-static int print_width_minus(int width, int len,const char *s)
+static int		print_width_minus(int width, int len, const char *s)
 {
 	while (*s)
 	{
@@ -15,7 +27,7 @@ static int print_width_minus(int width, int len,const char *s)
 	return (len);
 }
 
-static int print_width(int width, int flag,int len)
+static int		print_width(int width, int flag, int len)
 {
 	if (flag == 0)
 	{
@@ -24,7 +36,8 @@ static int print_width(int width, int flag,int len)
 			ft_putchar(' ');
 			len++;
 		}
-	}else if (flag == '0')
+	}
+	else if (flag == '0')
 		while (width-- > 0)
 		{
 			ft_putchar('0');
@@ -33,7 +46,7 @@ static int print_width(int width, int flag,int len)
 	return (len);
 }
 
-static char *preci(int preci,const char *s, char *new_s)
+static char		*preci(int preci, const char *s, char *new_s)
 {
 	int len;
 
@@ -44,7 +57,8 @@ static char *preci(int preci,const char *s, char *new_s)
 		len--;
 		new_s[len] = '\0';
 		new_s = ft_memcpy(new_s, s, preci);
-	} else
+	}
+	else
 	{
 		new_s = malloc(len);
 		len--;
@@ -53,17 +67,19 @@ static char *preci(int preci,const char *s, char *new_s)
 	}
 	return (new_s);
 }
-static void str_free(char *s, int flag)
+
+static void		str_free(char *s, int flag)
 {
 	if (flag >= 0)
 		free(s);
 }
-int ft_print_s(const char *fmt, va_list ap, int len,t_printf *tmp)
-{
-	const char *s;
-	char *new_s;
 
-	s   = va_arg(ap, const char *);
+int				ft_print_s(const char *fmt, va_list ap, int len, t_printf *tmp)
+{
+	const char	*s;
+	char		*new_s;
+
+	s = va_arg(ap, const char *);
 	new_s = (char *)s;
 	if (s == NULL)
 		new_s = "(null)";
@@ -75,12 +91,13 @@ int ft_print_s(const char *fmt, va_list ap, int len,t_printf *tmp)
 			len = print_width(tmp->width - ft_strlen(new_s), tmp->flag, len);
 		else if (tmp->flag == '-')
 		{
-			len = (print_width_minus(tmp->width - ft_strlen(new_s), len, new_s));
-			str_free(new_s,tmp->preci);
+			len = (print_width_minus(tmp->width - ft_strlen(new_s),
+						len, new_s));
+			str_free(new_s, tmp->preci);
 			return (ft_printf_aux(fmt, ap, len));
 		}
 	}
 	len += ft_putstr(new_s);
-	str_free(new_s,tmp->preci);
-	return ft_printf_aux(fmt, ap, len);
+	str_free(new_s, tmp->preci);
+	return (ft_printf_aux(fmt, ap, len));
 }

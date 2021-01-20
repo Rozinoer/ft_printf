@@ -6,13 +6,13 @@
 /*   By: dmyesha <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 20:21:07 by dmyesha           #+#    #+#             */
-/*   Updated: 2021/01/19 20:21:43 by dmyesha          ###   ########.fr       */
+/*   Updated: 2021/01/20 15:47:59 by dmyesha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printflib.h"
 
-static int  assist(t_printf *tmp, int len, char sym)
+static int	assist(t_printf *tmp, int len, char sym)
 {
 	if (tmp->width > 0)
 		while (tmp->width-- != 0)
@@ -23,7 +23,7 @@ static int  assist(t_printf *tmp, int len, char sym)
 	return (len);
 }
 
-static int  assistance(t_printf *tmp, int len)
+static int	assistance(t_printf *tmp, int len)
 {
 	while (tmp->width-- > 0)
 	{
@@ -33,10 +33,10 @@ static int  assistance(t_printf *tmp, int len)
 	return (len);
 }
 
-int         ft_print_c(const char *fmt, va_list ap, int len, t_printf *tmp)
+int			ft_print_c(const char *fmt, va_list ap, int len, t_printf *tmp)
 {
-	int c;
-	char sym;
+	int		c;
+	char	sym;
 
 	if (tmp->flag == '0')
 		sym = tmp->flag;
@@ -55,12 +55,13 @@ int         ft_print_c(const char *fmt, va_list ap, int len, t_printf *tmp)
 			len = assistance(tmp, len);
 			ft_putchar((char)c);
 		}
-	} else
+	}
+	else
 		ft_putchar((char)c);
 	return (ft_printf_aux(fmt, ap, len + 1));
 }
 
-int         ft_print_proc(const char *fmt, va_list ap, int len, t_printf *tmp)
+int			ft_print_proc(const char *fmt, va_list ap, int len, t_printf *tmp)
 {
 	char c;
 
@@ -70,10 +71,8 @@ int         ft_print_proc(const char *fmt, va_list ap, int len, t_printf *tmp)
 		c = ' ';
 	if (--tmp->width > 0 && tmp->flag != '-')
 	{
-		while (tmp->width-- != 0) {
-			ft_putchar(c);
-			len++;
-		}
+		while (tmp->width-- != 0)
+			len += ft_putchar(c);
 		ft_putchar((char)*fmt);
 	}
 	else
@@ -81,10 +80,7 @@ int         ft_print_proc(const char *fmt, va_list ap, int len, t_printf *tmp)
 		ft_putchar((char)*fmt);
 		if (tmp->width > 0)
 			while (tmp->width-- != 0)
-			{
-				ft_putchar(c);
-				len++;
-			}
+				len += ft_putchar(c);
 	}
 	fmt++;
 	return (ft_printf_aux(fmt, ap, len + 1));

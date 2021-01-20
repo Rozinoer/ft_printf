@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_seek.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmyesha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/20 16:03:13 by dmyesha           #+#    #+#             */
+/*   Updated: 2021/01/20 16:06:23 by dmyesha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/printflib.h"
 
-int ft_seek_flags(const char *fmt, t_printf *tmp)
+int		ft_seek_flags(const char *fmt, t_printf *tmp)
 {
 	int i;
 
@@ -15,17 +27,18 @@ int ft_seek_flags(const char *fmt, t_printf *tmp)
 			fmt++;
 			i++;
 		}
-		if(tmp->flag == '0')
+		if (tmp->flag == '0')
 			tmp->flag_sym = '0';
 		return (i);
 	}
 	return (0);
 }
 
-int ft_seek_width(char *fmt, t_printf *tmp, va_list ap)
+int		ft_seek_width(char *fmt, t_printf *tmp, va_list ap)
 {
 	int flag;
 	int i;
+
 	flag = 0;
 	if (*fmt == '*')
 	{
@@ -39,7 +52,7 @@ int ft_seek_width(char *fmt, t_printf *tmp, va_list ap)
 		tmp->width = i;
 		return (1);
 	}
-	while(*fmt == '0')
+	while (*fmt == '0')
 	{
 		fmt++;
 		flag++;
@@ -50,14 +63,13 @@ int ft_seek_width(char *fmt, t_printf *tmp, va_list ap)
 	return (0);
 }
 
-int ft_seek_preci(char *fmt, t_printf *tmp, va_list ap)
+int		ft_seek_preci(char *fmt, t_printf *tmp, va_list ap)
 {
 	int i;
 
 	i = 0;
-	if (*fmt == '.')
+	if (*fmt++ == '.')
 	{
-		fmt++;
 		while (*fmt == '0')
 		{
 			fmt++;
@@ -73,14 +85,14 @@ int ft_seek_preci(char *fmt, t_printf *tmp, va_list ap)
 		else
 		{
 			tmp->preci = 0;
-			return (1+i);
+			return (1 + i);
 		}
 		return (ft_rank(tmp->preci, 10) + 1 + i);
 	}
 	return (0);
 }
 
-int ft_seek_type(const char *fmt, t_printf *tmp)
+int		ft_seek_type(const char *fmt, t_printf *tmp)
 {
 	if (*fmt == '%')
 	{
@@ -88,8 +100,8 @@ int ft_seek_type(const char *fmt, t_printf *tmp)
 		return (0);
 	}
 	if (*fmt == 's' || *fmt == 'c' || *fmt == 'd' || *fmt == 'o'
-	    || *fmt == 'u' || *fmt == 'x' || *fmt == 'X'
-	    || *fmt == 'p' || *fmt == 'i')
+			|| *fmt == 'u' || *fmt == 'x' || *fmt == 'X'
+			|| *fmt == 'p' || *fmt == 'i')
 	{
 		tmp->type = *fmt;
 		return (1);
