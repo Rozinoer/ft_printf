@@ -23,20 +23,15 @@ static int	call_func(const char *fmt, va_list ap, int len, t_printf *tmp)
 	{
 		if (tmp->type == *type)
 		{
-			if (*type == 'c')
-				i = ft_print_c(fmt, ap, len, tmp);
-			if (*type == 's')
-				i = ft_print_s(fmt, ap, len, tmp);
-			if (*type == 'd' || *type == 'i')
-				i = ft_print_d(fmt, ap, len, tmp);
-			if (*type == 'x' || *type == 'X')
-				i = ft_print_x(fmt, ap, len, tmp);
-			if (*type == 'u')
-				i = ft_print_u(fmt, ap, len, tmp);
-			if (*type == '%')
-				i = ft_print_proc(fmt, ap, len, tmp);
-			if (*type == 'p')
-				i = ft_print_p(fmt, ap, len, tmp);
+			(*type == 'c') ? i = ft_print_c(fmt, ap, len, tmp) : i;
+			(*type == 's') ? i = ft_print_s(fmt, ap, len, tmp) : i;
+			(*type == 'd') ? i = ft_print_d(fmt, ap, len, tmp) : i;
+			(*type == 'i') ? i = ft_print_d(fmt, ap, len, tmp) : i;
+			(*type == 'x') ? i = ft_print_x(fmt, ap, len, tmp) : i;
+			(*type == 'X') ? i = ft_print_x(fmt, ap, len, tmp) : i;
+			(*type == 'u') ? i = ft_print_u(fmt, ap, len, tmp) : i;
+			(*type == 'p') ? i = ft_print_p(fmt, ap, len, tmp) : i;
+			(*type == '%') ? i = ft_print_proc(fmt, ap, len, tmp) : i;
 			break ;
 		}
 		type++;
