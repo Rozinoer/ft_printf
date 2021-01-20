@@ -72,9 +72,8 @@ static char		*check_preci(unsigned int n, char *num, t_printf *temp)
 		while (temp->preci-- > 0)
 		{
 			tmp = num;
-			num = ft_strjoin("0\0", num);
-			if (*num == '0')
-				free(tmp);
+			num = ft_strjoin("0", num);
+			free(tmp);
 		}
 	}
 	return (num);

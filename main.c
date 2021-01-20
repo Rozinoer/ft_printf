@@ -4,6 +4,7 @@
 
 
 int main() {
+
 	int		a = -4;
 	int		b = 0;
 	char	c = 'a';
@@ -176,6 +177,6 @@ int main() {
 	// ^ Theoriquement un comportement indefini mais testé par la moulinette
 	PRINT(" --- Return : %d\n", PRINT("(null)"));
 	PRINT(" --- Return : %d\n", PRINT(""));
-	sleep(100000);
+//	sleep(100000);
     return 0;
 }

@@ -75,7 +75,7 @@ char		*convert(unsigned long long n, unsigned int base,
 	char	*dig;
 
 	res = ft_rank(n, 16);
-	if (!(dig = malloc(res)))
+	if (!(dig = malloc(res + 1)))
 		return (NULL);
 	dig[res] = '\0';
 	while (--res >= 0)
