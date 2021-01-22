@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printflib.h"
+#include "printflib.h"
 
 static int		print_width_minus(int width, int len, const char *s)
 {

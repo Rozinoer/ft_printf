@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printflib.h"
+#include "printflib.h"
 
 static int	assist(t_printf *tmp, int len, char sym)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printflib.h"
+#include "printflib.h"
 
 static char		*check_preci(unsigned int n, char *num, t_printf *temp)
 {

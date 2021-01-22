@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printflib.h"
+#include "printflib.h"
 
 void	init_format(t_printf *tmp)
 {

@@ -1,6 +1,18 @@
-#include "../includes/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rank.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmyesha <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/21 18:42:06 by dmyesha           #+#    #+#             */
+/*   Updated: 2021/01/21 18:43:21 by dmyesha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_rank(unsigned long long num, unsigned long long base)
+#include "libft.h"
+
+int		ft_rank(unsigned long long num, unsigned long long base)
 {
 	int rank;
 
@@ -16,4 +28,3 @@ int ft_rank(unsigned long long num, unsigned long long base)
 	}
 	return (rank);
 }
-

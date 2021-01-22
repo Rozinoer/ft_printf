@@ -6,11 +6,11 @@
 /*   By: dmyesha <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 18:51:39 by dmyesha           #+#    #+#             */
-/*   Updated: 2020/08/13 21:23:17 by dmyesha          ###   ########.fr       */
+/*   Updated: 2021/01/21 18:44:16 by dmyesha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 int	ft_putchar(char c)
 {

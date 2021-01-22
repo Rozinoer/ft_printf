@@ -47,7 +47,7 @@ $(NAME): my_lib $(OBJS)
 my_lib:
 	make -C $(LIBFT)
 
-%.o: %.c includes/ft_printf.h
+%.o: %.c includes/printflib.h
 	gcc -g $(FLAGS) $(INCLUDES) -c $< -o $@
 
 test: $(NAME)

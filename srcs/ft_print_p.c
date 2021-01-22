@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printflib.h"
+#include "printflib.h"
 
 static int		print_min(t_printf *tmp, char *num)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printflib.h"
+#include "printflib.h"
 
 static int		print_min(t_printf *tmp, char *num)
 {
@@ -74,7 +74,7 @@ static char		*check_preci(int n, char *num, t_printf *temp)
 		while (temp->preci-- > 0)
 		{
 			tmp = num;
-			num = ft_strjoin("0\0", num);
+			num = ft_strjoin("0", num);
 			free(tmp);
 		}
 	}

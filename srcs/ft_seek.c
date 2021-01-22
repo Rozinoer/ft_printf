@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printflib.h"
+#include "printflib.h"
 
 int		ft_seek_flags(const char *fmt, t_printf *tmp)
 {

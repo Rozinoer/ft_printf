@@ -14,13 +14,13 @@
 # define FT_PRINTF_PRINTFLIB_H
 
 # include "stdarg.h"
-# include "libft.h"
+# include "../libft/libft.h"
 
 typedef struct	s_printf
 {
 	char		flag;
-	int			width;
-	int			preci;
+	long long	width;
+	long long	preci;
 	char		type;
 	char		flag_sym;
 	int			sign;

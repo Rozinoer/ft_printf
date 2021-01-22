@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printflib.h"
+#include "printflib.h"
 
 static int	call_func(const char *fmt, va_list ap, int len, t_printf *tmp)
 {
